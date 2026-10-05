@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const supportForm = document.getElementById('support-query-form');
     const submitBtn = document.getElementById('query-submit-btn');
     const statusBanner = document.getElementById('query-status-banner');
-    const TARGET_RECIPIENT = 'hariganesh260@gmail.com';
+    const TARGET_RECIPIENT = 'achupporihelpdesk@gmail.com';
 
     if (supportForm) {
         supportForm.addEventListener('submit', async (e) => {

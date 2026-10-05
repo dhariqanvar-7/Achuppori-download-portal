@@ -10,11 +10,11 @@ const PORT = process.env.PORT || 3000;
 // EMAIL CONFIGURATION
 // =========================================================================
 // 1. SENDER_EMAIL: The system account that sends the email (uses its 16-char App Password)
-const SENDER_EMAIL = process.env.SENDER_EMAIL || 'your-sender-system@gmail.com';
-const SENDER_PASSWORD = process.env.SENDER_PASSWORD || 'your-16-char-app-password';
+const SENDER_EMAIL = process.env.SENDER_EMAIL;
+const SENDER_PASSWORD = process.env.SENDER_PASSWORD;
 
 // 2. SUPPORT_INBOX: Where incoming queries are delivered
-const SUPPORT_INBOX = process.env.SUPPORT_INBOX || 'hariganesh260@gmail.com';
+const SUPPORT_INBOX = process.env.SUPPORT_INBOX;
 
 // Middleware
 app.use(express.json());
@@ -128,10 +128,14 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`===============================================`);
-    console.log(`🚀 Achuppori Server is active!`);
-    console.log(`📡 Local Web App: http://localhost:${PORT}`);
-    console.log(`✉️  Contact API:   http://localhost:${PORT}/api/contact`);
-    console.log(`===============================================`);
-});
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`===============================================`);
+        console.log(`🚀 Achuppori Server is active!`);
+        console.log(`📡 Local Web App: http://localhost:${PORT}`);
+        console.log(`✉️  Contact API:   http://localhost:${PORT}/api/contact`);
+        console.log(`===============================================`);
+    });
+}
+
+module.exports = app;
