@@ -162,3 +162,16 @@ document.addEventListener('DOMContentLoaded', () => {
         statusBanner.innerHTML = text;
     }
 });
+
+// ==========================================
+// 4. SERVICE WORKER REGISTRATION (PWA)
+// ==========================================
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then((reg) => {
+            console.debug('Achuppori Service Worker registered successfully:', reg.scope);
+        }).catch((err) => {
+            console.debug('Service Worker registration skipped or failed:', err);
+        });
+    });
+}

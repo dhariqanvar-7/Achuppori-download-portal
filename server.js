@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static frontend files (index.html, about.html, assets, page, etc.)
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname), { extensions: ['html'] }));
 
 // Configure Nodemailer transporter
 const transporter = nodemailer.createTransport({
